@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cuenta ovejas</title>
+  <meta name="description" content="Una app sencilla para contar ovejas: un clic, una oveja.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23F4F1EA'/%3E%3Cellipse cx='22' cy='15' rx='5' ry='6' fill='%232B2A33'/%3E%3C/svg%3E">
+</head>
+<body>
+  <!-- Escena de fondo: cielo, luna, colinas y cerca -->
+  <div class="sky" aria-hidden="true">
+    <div class="moon"></div>
+    <div class="stars"></div>
+    <div class="hill hill-back"></div>
+    <div class="hill hill-front"></div>
+    <div class="fence">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="flock" id="flock"></div>
+  </div>
+
+  <main class="app">
+    <!-- Pantalla de inicio -->
+    <section class="screen screen-start" id="screen-start" aria-labelledby="title">
+      <svg class="hero-sheep" viewBox="0 0 120 90" aria-hidden="true"><use href="#sheep"/></svg>
+      <h1 id="title">Cuenta ovejas</h1>
+      <p class="lead">Un clic, una oveja. Así de simple.</p>
+      <button class="btn btn-primary" id="btn-start" type="button">Empezar a contar</button>
+      <p class="record" id="record" hidden></p>
+    </section>
+
+    <!-- Pantalla del contador -->
+    <section class="screen screen-count" id="screen-count" aria-label="Contador de ovejas" hidden>
+      <div class="counter">
+        <output class="count" id="count" aria-live="polite" aria-atomic="true">0</output>
+        <span class="count-label" id="count-label">ovejas</span>
+      </div>
+      <p class="message" id="message" aria-live="polite">Toca el botón o la pantalla para contar.</p>
+
+      <button class="btn btn-count" id="btn-count" type="button" aria-describedby="hint">
+        <svg viewBox="0 0 120 90" aria-hidden="true"><use href="#sheep"/></svg>
+        Contar oveja
+      </button>
+      <p class="hint" id="hint">También puedes usar la barra espaciadora.</p>
+
+      <div class="actions">
+        <button class="btn btn-ghost" id="btn-reset" type="button">Reiniciar</button>
+        <button class="btn btn-ghost" id="btn-stop" type="button">Terminar</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Dibujo de la oveja (se reutiliza con <use>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="sheep" viewBox="0 0 120 90">
+        <g class="legs" fill="#2B2A33">
+          <rect x="34" y="58" width="7" height="24" rx="3.5"/>
+          <rect x="48" y="60" width="7" height="22" rx="3.5"/>
+          <rect x="68" y="60" width="7" height="22" rx="3.5"/>
+          <rect x="80" y="58" width="7" height="24" rx="3.5"/>
+        </g>
+        <g fill="#F4F1EA" stroke="#D9D3C5" stroke-width="2">
+          <circle cx="40" cy="44" r="16"/>
+          <circle cx="56" cy="34" r="18"/>
+          <circle cx="74" cy="36" r="17"/>
+          <circle cx="84" cy="50" r="14"/>
+          <circle cx="62" cy="54" r="17"/>
+          <circle cx="42" cy="56" r="13"/>
+        </g>
+        <ellipse cx="98" cy="40" rx="13" ry="15" fill="#2B2A33"/>
+        <ellipse cx="90" cy="30" rx="7" ry="4" fill="#2B2A33" transform="rotate(-25 90 30)"/>
+        <circle cx="102" cy="37" r="2.6" fill="#fff"/>
+        <circle cx="102.6" cy="37.4" r="1.3" fill="#2B2A33"/>
+        <ellipse cx="104" cy="47" rx="3" ry="2" fill="#E9A3B5"/>
+        <circle cx="92" cy="26" r="6" fill="#F4F1EA" stroke="#D9D3C5" stroke-width="2"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="app.js"></script>
+</body>
+</html>
